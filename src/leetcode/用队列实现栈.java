@@ -22,7 +22,6 @@ package leetcode;
  * @create: 2019-08-28 16:11
  **/
 
-import jdk.nashorn.internal.ir.ReturnNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

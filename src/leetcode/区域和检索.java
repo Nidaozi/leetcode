@@ -1,9 +1,5 @@
 package leetcode;
 
-import javafx.util.Pair;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @program: leetcode

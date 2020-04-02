@@ -1,7 +1,5 @@
 package leetcode;
 
-import com.sun.org.apache.regexp.internal.RE;
-
 /**
  * @program: demo01
  * @description: 给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，

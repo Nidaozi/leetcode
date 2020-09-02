@@ -23,38 +23,65 @@ import java.util.List;
 
 public class 三数之和 {
 
+//    public static List<List<Integer>> threeSum(int[] nums) {
+//        List<List<Integer>> lists = new ArrayList<>();
+//        if (nums == null || nums.length < 3)
+//            return lists;
+//        int len = nums.length;
+//        Arrays.sort(nums);
+//        for (int i = 0; i < len; i++) {
+//            if (nums[i] > 0) break;
+//            if (i > 0 && nums[i] == nums[i - 1]) continue;
+//            int L = i + 1;
+//            int R = len - 1;
+//            while (L<R ){
+//                int sum = nums[i] +nums[L]+nums[R];
+//                if (sum==0){
+//                    lists.add(Arrays.asList(nums[i],nums[L],nums[R]));
+//                    while (L<R && nums[L]==nums[L+1]) L++;
+//                    while (L<R && nums[R]==nums[R-1]) R--;
+//                    L++;
+//                    R--;
+//                }
+//                else if(sum<0)L++;
+//                else {
+//                    R--;
+//                }
+//            }
+//        }
+//        return lists;
+//    }
+
     public static List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> lists = new ArrayList<>();
-        if (nums == null || nums.length < 3)
-            return lists;
-        int len = nums.length;
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums == null || nums.length < 3) {
+            return res;
+        }
         Arrays.sort(nums);
-        for (int i = 0; i < len; i++) {
-            if (nums[i] > 0) break;
-            if (i > 0 && nums[i] == nums[i - 1]) continue;
-            int L = i + 1;
-            int R = len - 1;
-            while (L<R ){
-                int sum = nums[i] +nums[L]+nums[R];
-                if (sum==0){
-                    lists.add(Arrays.asList(nums[i],nums[L],nums[R]));
-                    while (L<R && nums[L]==nums[L+1]) L++;
-                    while (L<R && nums[R]==nums[R-1]) R--;
-                    L++;
-                    R--;
-                }
-                else if(sum<0)L++;
-                else {
-                    R--;
+        for (int i = 0; i < nums.length;) {
+            int lo = i+1, hi = nums.length - 1;
+            int num = nums[i];
+            while (lo < hi) {
+                int sum = nums[lo] + nums[hi];
+                int left = nums[lo];
+                int right = nums[hi];
+                if (nums[i] + sum == 0) {
+                    res.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
+                    while (lo < hi && nums[lo] == left) lo++;
+                    while (hi > lo && nums[hi] == right) hi--;
+                } else if (nums[i] + sum > 0) {
+                    while (hi > lo && nums[hi] == right) hi--;
+                } else {
+                    while (lo < hi && nums[lo] == left) lo++;
                 }
             }
+            while (i < nums.length && nums[i] == num) i++;
         }
-        return lists;
+        return res;
     }
 
-
     public static void main(String[] args) {
-        int[] nums = new int[]{-1,0,1,2,-1,-4};
+        int[] nums = new int[]{-1, 0, 1, 2, -1, -4};
         System.out.println(threeSum(nums));
     }
 }
